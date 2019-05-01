@@ -13,10 +13,10 @@
         </q-btn>
 
         <q-toolbar-title>
-          Quasar App
+          {{ $route.meta.title || 'Dashboard' }}
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>Reuni Bani Awi</div>
       </q-toolbar>
     </q-header>
 
@@ -26,50 +26,41 @@
       content-class="bg-grey-2"
     >
       <q-list>
-        <q-item-label header>Essential Links</q-item-label>
-        <q-item clickable tag="a" target="_blank" href="http://v1.quasar-framework.org">
+        <q-item-label header>Menu Utama</q-item-label>
+        <q-item clickable to="/" exact>
           <q-item-section avatar>
-            <q-icon name="school" />
+            <q-icon name="dashboard" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Docs</q-item-label>
-            <q-item-label caption>v1.quasar-framework.org</q-item-label>
+            <q-item-label>Dashboard</q-item-label>
+            <q-item-label caption>Ringkasan Informasi</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://github.com/quasarframework/">
+        <q-item clickable to="/attendance" exact>
           <q-item-section avatar>
-            <q-icon name="code" />
+            <q-icon name="motorcycle" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Github</q-item-label>
-            <q-item-label caption>github.com/quasarframework</q-item-label>
+            <q-item-label>Kehadiran</q-item-label>
+            <q-item-label caption>Informasi Kehadiran dan Iuran</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable tag="a" target="_blank" href="http://chat.quasar-framework.org">
+        <q-item clickable to="/report" exact>
           <q-item-section avatar>
-            <q-icon name="chat" />
+            <q-icon name="attach_money" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Discord Chat Channel</q-item-label>
-            <q-item-label caption>chat.quasar-framework.org</q-item-label>
+            <q-item-label>Laporan Keuangan</q-item-label>
+            <q-item-label caption>Laporan keluar Masuk Keuangan</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://forum.quasar-framework.org">
+        <q-item clickable to="/info" exact>
           <q-item-section avatar>
-            <q-icon name="record_voice_over" />
+            <q-icon name="info" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Forum</q-item-label>
-            <q-item-label caption>forum.quasar-framework.org</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://twitter.com/quasarframework">
-          <q-item-section avatar>
-            <q-icon name="rss_feed" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Twitter</q-item-label>
-            <q-item-label caption>@quasarframework</q-item-label>
+            <q-item-label>Informasi</q-item-label>
+            <q-item-label caption>Informasi Penting</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
