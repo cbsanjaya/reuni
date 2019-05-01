@@ -49,11 +49,12 @@ export default {
   }),
   computed: {
     computedData () {
-      let rows = this.$store.state.hadir.data
+      let dataHadir = this.$store.state.hadir.data
+      let rows = dataHadir
       if (this.filter) {
         const lowerTerms = this.filter.toLowerCase()
-        rows = this.data.filter(
-          row => (row.families.some(fam => fam.toLowerCase().indexOf(lowerTerms) !== -1))
+        rows = dataHadir.filter(
+          row => (row.keluarga.some(fam => fam.toLowerCase().indexOf(lowerTerms) !== -1))
         )
       }
       return rows
