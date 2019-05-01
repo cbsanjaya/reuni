@@ -25,14 +25,14 @@
         <q-item>
           <q-item-section>
             <q-item-label>
-              {{ data.families[0] }}
-              <q-badge v-if="data.present === 1" color="green" label="hadir" />
-              <q-badge v-else-if="data.present === 0" color="green-10" label="akan hadir" />
+              {{ data.keluarga[0] }}
+              <q-badge v-if="data.hadir === 2" color="green" label="hadir" />
+              <q-badge v-else-if="data.hadir === 1" color="green-10" label="akan hadir" />
               <q-badge v-else color="red" label="belum konfirmasi" />
             </q-item-label>
-            <q-item-label caption lines="2">{{ data.families.filter((e,i) => i !== 0 ).join(', ') }}</q-item-label>
-            <q-item-label v-if="data.pay">
-              <q-badge>infaq {{ data.pay.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') }}</q-badge>
+            <q-item-label caption lines="2">{{ data.keluarga.filter((e,i) => i !== 0 ).join(', ') }}</q-item-label>
+            <q-item-label v-if="data.iuran">
+              <q-badge>iuran {{ data.iuran.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') }}</q-badge>
             </q-item-label>
           </q-item-section>
         </q-item>
@@ -42,20 +42,14 @@
 </template>
 
 <script>
-import att from 'src/data/attendance'
-
 export default {
   name: 'AttendancePage',
   data: () => ({
-    filter: '',
-    data: []
+    filter: ''
   }),
-  mounted () {
-    this.data = att
-  },
   computed: {
     computedData () {
-      let rows = this.data
+      let rows = this.$store.state.hadir.data
       if (this.filter) {
         const lowerTerms = this.filter.toLowerCase()
         rows = this.data.filter(
