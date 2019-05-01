@@ -33,6 +33,33 @@
           </q-item-section>
           <q-item-section>
             <q-item-label>Dashboard</q-item-label>
+            <q-item-label caption>Ringkasan Informasi</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item clickable to="/attendance" exact>
+          <q-item-section avatar>
+            <q-icon name="motorcycle" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Kehadiran</q-item-label>
+            <q-item-label caption>Informasi Kehadiran dan Iuran</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item clickable to="/report" exact>
+          <q-item-section avatar>
+            <q-icon name="attach_money" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Laporan Keuangan</q-item-label>
+            <q-item-label caption>Laporan keluar Masuk Keuangan</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item clickable to="/info" exact>
+          <q-item-section avatar>
+            <q-icon name="info" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Informasi</q-item-label>
             <q-item-label caption>Informasi Penting</q-item-label>
           </q-item-section>
         </q-item>
