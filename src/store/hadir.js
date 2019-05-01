@@ -1,4 +1,4 @@
-import att from 'src/data/attendance'
+import att from 'src/data/hadir'
 
 export default {
   namespaced: true,
