@@ -67,14 +67,14 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <q-pull-to-refresh @refresh="loadData">
+        <router-view />
+      </q-pull-to-refresh>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
-import { openURL } from 'quasar'
-
 export default {
   name: 'MyLayout',
   data () {
@@ -82,8 +82,13 @@ export default {
       leftDrawerOpen: this.$q.platform.is.desktop
     }
   },
+  mounted () {
+    this.loadData()
+  },
   methods: {
-    openURL
+    loadData (done) {
+      this.$store.dispatch('sheet/LOAD_DATA', done)
+    }
   }
 }
 </script>
