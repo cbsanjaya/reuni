@@ -60,7 +60,7 @@ export default {
       if (this.filter) {
         const lowerTerms = this.filter.toLowerCase()
         rows = dataHadir.filter(
-          row => row.keluarga.toLowerCase().indexOf(lowerTerms) !== -1
+          row => (row.keluarga.some(fam => fam.toLowerCase().indexOf(lowerTerms) !== -1))
         )
       }
       return rows
@@ -68,16 +68,19 @@ export default {
   },
   methods: {
     loadData (cb) {
+      this.data = []
       this.$axios.get('hadir!A3:F100').then(res => {
         res.data.values.forEach(e => {
-          this.data.push({
-            id: e[0] ? e[0] : '',
-            keluarga: e[1] ? e[1].split(', ') : '',
-            hadir: e[2] ? e[2] : 0,
-            iuran: e[3] ? e[3] : 0,
-            akan: e[4] ? e[4] : 0,
-            sudah: e[5] ? e[5] : 0
-          })
+          if (e[0] && e[1]) {
+            this.data.push({
+              id: e[0] ? e[0] : '',
+              keluarga: e[1] ? e[1].split(', ') : '',
+              hadir: e[2] ? e[2] : 0,
+              iuran: e[3] ? e[3] : 0,
+              akan: e[4] ? e[4] : 0,
+              sudah: e[5] ? e[5] : 0
+            })
+          }
         })
         if (cb != null) { cb() }
       })
