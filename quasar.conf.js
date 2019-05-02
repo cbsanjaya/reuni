@@ -41,7 +41,8 @@ module.exports = function (ctx) {
         'QSeparator',
         'QAvatar',
         'QBadge',
-        'QInput'
+        'QInput',
+        'QPullToRefresh'
       ],
 
       directives: [
