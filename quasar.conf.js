@@ -134,7 +134,7 @@ module.exports = function (ctx) {
     },
 
     cordova: {
-      // id: 'org.cordova.quasar.app'
+      id: 'com.cbsanjaya.reuni'
       // noIosLegacyBuildFlag: true // uncomment only if you know what you are doing
     },
 

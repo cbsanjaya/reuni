@@ -1,9 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.cbsanjaya.reuni" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.cbsanjaya.reuni" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Reuni Keluarga</name>
-    <description>
-        Aplikasi Reuni Keluarga untuk Android dan IOS.
-    </description>
+    <description>Aplikasi Untuk Reuni Keluarga</description>
     <author email="9c96b6@gmail.com" href="http://cbsanjaya.com">
         Cahya Bagus Sanjaya
     </author>
