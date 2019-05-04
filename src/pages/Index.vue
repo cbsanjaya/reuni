@@ -72,120 +72,48 @@ export default {
       let keluarga = this.$store.getters['sheet/TOTAL_KELUARGA']
       let belum = keluarga.jumlah - keluarga.akan - keluarga.sudah
 
-      return {
-        title: {
-          text: 'Kehadiran Keluarga',
-          x: 'center'
-        },
-        tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)'
-        },
-        legend: {
-          orient: 'vertical',
-          left: 'left',
-          data: ['Belum', 'OTW', 'Hadir']
-        },
-        color: ['red', 'green', 'blue'],
-        series: [
-          {
-            name: 'Kehadiran',
-            type: 'pie',
-            radius: '60%',
-            center: ['50%', '50%'],
-            data: [
-              { value: belum, name: 'Belum' },
-              { value: keluarga.akan, name: 'OTW' },
-              { value: keluarga.sudah, name: 'Hadir' }
-            ],
-            itemStyle: {
-              emphasis: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
-              }
-            }
-          }
-        ]
-      }
+      return this.getOptions([
+        { value: belum, name: 'Belum' },
+        { value: keluarga.akan, name: 'OTW' },
+        { value: keluarga.sudah, name: 'Hadir' }
+      ])
     },
     chartsIuran () {
       let keluarga = this.$store.getters['sheet/TOTAL_KELUARGA']
       let belum = keluarga.jumlah - keluarga.iuran
 
-      return {
-        title: {
-          text: 'Pembayaran Iuran',
-          x: 'center'
-        },
-        tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)'
-        },
-        legend: {
-          orient: 'vertical',
-          left: 'left',
-          data: ['Belum', 'Sudah']
-        },
-        color: ['red', 'blue'],
-        series: [
-          {
-            name: 'Pembayaran Iuran',
-            type: 'pie',
-            radius: '60%',
-            center: ['50%', '50%'],
-            data: [
-              { value: belum, name: 'Belum' },
-              { value: keluarga.iuran, name: 'Sudah' }
-            ],
-            itemStyle: {
-              emphasis: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
-              }
-            }
-          }
-        ]
-      }
+      return this.getOptions([
+        { value: belum, name: 'Belum' },
+        { value: keluarga.iuran, name: 'Sudah' }
+      ])
     },
     chartsUang () {
       let uang = this.$store.getters['sheet/TOTAL_UANG']
       let minus = Math.abs(uang.minus)
       let plus = uang.plus
 
+      return this.getOptions([
+        { value: minus, name: 'Keluar' },
+        { value: plus, name: 'Masuk' }
+      ])
+    }
+  },
+  methods: {
+    getOptions (data) {
       return {
-        title: {
-          text: 'Keuangan',
-          x: 'center'
-        },
         tooltip: {
           trigger: 'item',
           formatter: '{a} <br/>{b} : {c} ({d}%)'
         },
-        legend: {
-          orient: 'vertical',
-          left: 'left',
-          data: ['Masuk', 'Keluar']
+        label: {
+          formatter: '{b}: ({d}%)'
         },
-        color: ['blue', 'red'],
+        color: ['red', 'green', 'blue'],
         series: [
           {
-            name: 'Keuangan',
             type: 'pie',
-            radius: '60%',
-            center: ['50%', '50%'],
-            data: [
-              { value: plus, name: 'Masuk' },
-              { value: minus, name: 'Keluar' }
-            ],
-            itemStyle: {
-              emphasis: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
-              }
-            }
+            radius: '80%',
+            data: data
           }
         ]
       }
