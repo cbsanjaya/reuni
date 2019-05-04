@@ -13,6 +13,15 @@ export default {
       let plus = saldo - minus
 
       return { plus, minus, saldo }
+    },
+    TOTAL_KELUARGA: state => {
+      let jumlah = state.hadir.length
+      let akan = state.hadir.filter(e => e.hadir === 1).length
+      let sudah = state.hadir.filter(e => e.hadir === 2).length
+      let akanPerson = state.hadir.reduce((t, n) => t + n.akan, 0)
+      let sudahPerson = state.hadir.reduce((t, n) => t + n.sudah, 0)
+
+      return { jumlah, akan, akanPerson, sudah, sudahPerson }
     }
   },
   mutations: {
@@ -26,7 +35,8 @@ export default {
             hadir: e[2] ? e[2] : 0,
             iuran: e[3] ? e[3] : 0,
             akan: e[4] ? e[4] : 0,
-            sudah: e[5] ? e[5] : 0
+            sudah: e[5] ? e[5] : 0,
+            alamat: e[6] ? e[6] : ''
           })
         }
       })
@@ -47,7 +57,7 @@ export default {
   },
   actions: {
     LOAD_DATA ({ commit }, cb) {
-      axios.get('values:batchGet?ranges=hadir!A3%3AF100&ranges=uang!A3%3AE100')
+      axios.get('values:batchGet?ranges=hadir!A3%3AG100&ranges=uang!A3%3AE100')
         .then(res => {
           commit('STORE_DATA', res.data)
           if (cb != null) { cb() }
