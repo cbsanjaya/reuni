@@ -26,15 +26,22 @@
           <q-item-section>
             <q-item-label>
               {{ data.keluarga[0] }}
-              <q-badge v-if="data.hadir === 2" color="green">hadir {{ data.sudah }} Orang</q-badge>
-              <q-badge v-else-if="data.hadir === 1" color="green-10">akan hadir {{ data.akan }} Orang</q-badge>
-              <q-badge v-else color="red" label="belum konfirmasi" />
             </q-item-label>
             <q-item-label caption lines="2">{{ data.keluarga.filter((e,i) => i !== 0 ).join(', ') }}</q-item-label>
-            <q-item-label v-if="data.iuran">
-              <q-badge>iuran {{ data.iuran | money }}</q-badge>
-            </q-item-label>
+            <q-item-label caption v-if="data.alamat">{{ data.alamat }}</q-item-label>
           </q-item-section>
+          <q-item-section v-if="data.hadir || data.iuran" side top>
+          <q-item-label v-if="data.iuran">
+            <q-badge>{{ data.iuran | ribuan }}</q-badge>
+          </q-item-label>
+
+          <div v-if="data.hadir === 1" class="text-green">
+            <q-icon v-for="n in data.akan" :key="n" name="person" />
+          </div>
+          <div v-if="data.hadir === 2" class="text-blue">
+            <q-icon v-for="n in data.sudah" :key="n" name="person" />
+          </div>
+        </q-item-section>
         </q-item>
       </div>
     </q-list>
