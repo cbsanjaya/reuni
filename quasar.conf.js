@@ -45,7 +45,8 @@ module.exports = function (ctx) {
         'QInput',
         'QPullToRefresh',
         'QCard',
-        'QCardSection'
+        'QCardSection',
+        'QCardActions'
       ],
 
       directives: [
