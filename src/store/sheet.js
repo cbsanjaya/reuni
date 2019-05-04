@@ -20,8 +20,9 @@ export default {
       let sudah = state.hadir.filter(e => e.hadir === 2).length
       let akanPerson = state.hadir.reduce((t, n) => t + n.akan, 0)
       let sudahPerson = state.hadir.reduce((t, n) => t + n.sudah, 0)
+      let iuran = state.hadir.filter(e => e.iuran !== 0).length
 
-      return { jumlah, akan, akanPerson, sudah, sudahPerson }
+      return { jumlah, akan, akanPerson, sudah, sudahPerson, iuran }
     }
   },
   mutations: {
