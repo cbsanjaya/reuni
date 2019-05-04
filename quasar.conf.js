@@ -5,7 +5,8 @@ module.exports = function (ctx) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     boot: [
-      'axios'
+      'axios',
+      'charts'
     ],
 
     css: [
@@ -65,6 +66,10 @@ module.exports = function (ctx) {
     build: {
       scopeHoisting: true,
       vueRouterMode: 'history',
+      transpileDependencies: [
+        /vue-echarts/,
+        /resize-detector/
+      ],
       // vueCompiler: true,
       // gzip: true,
       // analyze: true,
@@ -134,7 +139,7 @@ module.exports = function (ctx) {
     },
 
     cordova: {
-      // id: 'org.cordova.quasar.app'
+      id: 'com.cbsanjaya.reuni'
       // noIosLegacyBuildFlag: true // uncomment only if you know what you are doing
     },
 
