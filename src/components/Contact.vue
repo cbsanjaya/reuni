@@ -7,8 +7,10 @@
         <div class="text-center text-weight-bolder">{{ contact }}</div>
       </q-card-section>
       <q-card-actions align="around">
-        <q-btn flat round color="red" icon="call" type="a" :href="`tel:${contact}`" target="_blank" @click="makeCall"/>
-        <q-btn flat round color="green" icon="chat" type="a" :href="`https://wa.me/${contact}`" target="_blank" @click="sendMessage"/>
+        <q-btn flat round color="red" icon="call" target="_blank" @click="makeCall"
+          type="a" :href="`tel:${contact.replace('08','628')}`" />
+        <q-btn flat round color="green" icon="chat" target="_blank" @click="sendMessage"
+          type="a" :href="`https://wa.me/${contact.replace('08','628')}`" />
       </q-card-actions>
     </q-card>
   </div>
